@@ -132,4 +132,3 @@ These Terms are governed by the laws of the Arab Republic of Egypt, and the cour
 - The User may not assign their rights or obligations to anyone else. We may do so in the event of a transfer of ownership of the Platform, subject to the Privacy Policy.
 - We send notices through the Platform or to the registered email.
 - These Terms are available in Arabic and English. The version in the language you selected when you accepted is the version you agreed to, and it prevails if there is any discrepancy between the language versions.
-- Contact: operation@mind-egypt.com.

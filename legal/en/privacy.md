@@ -100,4 +100,4 @@ We may amend this policy. For a material change we will ask for your consent aga
 
 ## 13. Contact
 
-Data protection officer: the Platform owner (Mind), operation@mind-egypt.com. You may also file a complaint with Egypt's Personal Data Protection Center.
+Data protection officer: the Platform owner (Mind). You may also file a complaint with Egypt's Personal Data Protection Center.

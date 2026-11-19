@@ -4,17 +4,16 @@
 import markdown, os, shutil, html
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EMAIL = "operation@mind-egypt.com"
 SRC_LEGAL = os.path.join(ROOT, "legal")
 
 T = {
 "ar": dict(dir="rtl", lang="ar", prefix="", other="/en/", other_label="English", home="/",
   title="Mind — إدارة السناتر والدروس الخصوصية في تطبيق واحد",
   desc="تطبيق Mind لإدارة السناتر ومراكز التدريب والمدرس الفردي: حضور بالـ QR والباركود، فواتير ومدفوعات، امتحانات ودرجات، وتقارير لولي الأمر.",
-  nav=[("#features","المميزات"),("#plans","الباقات والأسعار"),("#faq","الأسئلة الشائعة"),("#contact","تواصل معنا")],
+  nav=[("#features","المميزات"),("#faq","الأسئلة الشائعة")],
   h1="إدارة السنتر كلها في تطبيق واحد",
   sub="حضور بالـ QR والباركود، فواتير ومدفوعات، امتحانات ودرجات، وتقارير لولي الأمر. من غير ورق ومن غير لخبطة.",
-  cta1="شوف الباقات", cta2="تواصل معنا",
+  cta1="شوف المميزات", cta2="",
   who_h="مين بيستفيد؟",
   who=[("السناتر ومراكز التدريب","تنظيم المجموعات والمواعيد والقاعات والفريق في مكان واحد."),
        ("المدرس الفردي","نفس الأدوات من غير تعقيد وبسعر أقل."),
@@ -54,20 +53,19 @@ T = {
        ("هل التطبيق بيتتبع موقعي؟","لا. الموقع بيتقارن بنطاق السنتر لحظة تسجيل الحضور فقط ومابيتخزنش."),
        ("هل بتبيعوا بياناتنا؟","لا. مابنبيع ولا بنؤجّر البيانات ولا بنستخدمها في الاستهداف الإعلاني."),
        ("هل الطفل محتاج حساب؟","الطفل أقل من 18 سنة بيتفعّل حسابه بموافقة ولي أمره، وولي الأمر يقدر يسحب الموافقة في أي وقت."),
-       ("لو الاشتراك خلص هيحصل إيه في بياناتي؟","بياناتك بتفضل محفوظة، والخدمات بترجع بعد التجديد. وعند إغلاق الحساب بتتاح البيانات للتصدير 30 يومًا."),
-       ("هل فيه فترة تجربة؟","أيوه. كل سنتر جديد بيبدأ بتجربة مجانية بكل المميزات، وولي الأمر أول شهر مجاني.")],
+       ("لو الاشتراك خلص هيحصل إيه في بياناتي؟","بياناتك بتفضل محفوظة، والخدمات بترجع بعد التجديد. وعند إغلاق الحساب بتتاح البيانات للتصدير 30 يومًا.")],
   contact_h="تواصل معنا",
   contact="للدعم والاستفسارات والاشتراكات وطلبات حذف أو تصحيح البيانات:",
   op="Mind مشروع يملكه ويديره شخص طبيعي في جمهورية مصر العربية.",
-  foot=[("/privacy/","سياسة الخصوصية"),("/terms/","شروط الاستخدام"),("/refund/","سياسة الاسترداد والإلغاء"),("/delete-account/","حذف الحساب"),("/center-agreement/","اتفاقية السنتر")],
+  foot=[("/privacy/","سياسة الخصوصية"),("/terms/","شروط الاستخدام"),("/delete-account/","حذف الحساب"),("/center-agreement/","اتفاقية السنتر")],
   legal_src="", ),
 "en": dict(dir="ltr", lang="en", prefix="/en", other="/", other_label="العربية", home="/en/",
   title="Mind — run your center and private lessons in one app",
   desc="Mind helps tutoring centers, training centers and solo teachers manage attendance by QR and barcode, invoices and payments, exams and grades, and parent updates.",
-  nav=[("#features","Features"),("#plans","Plans and pricing"),("#faq","FAQ"),("#contact","Contact")],
+  nav=[("#features","Features"),("#faq","FAQ")],
   h1="Run your whole center from one app",
   sub="QR and barcode attendance, invoices and payments, exams and grades, and updates for parents. No paper, no chaos.",
-  cta1="See plans", cta2="Contact us",
+  cta1="See features", cta2="",
   who_h="Who is it for?",
   who=[("Centers and training centers","Groups, schedules, rooms and staff in one place."),
        ("Solo teachers","The same tools, simpler and cheaper."),
@@ -107,64 +105,12 @@ T = {
        ("Does the app track my location?","No. Location is compared to the center area at check-in only and is not stored."),
        ("Do you sell our data?","No. We do not sell or rent data and we do not use it for advertising targeting."),
        ("Does a child need an account?","A child under 18 is activated only with a parent's consent, which the parent can withdraw at any time."),
-       ("What happens to my data if the subscription ends?","Your data stays saved and the services return after renewal. If an account is closed, data stays available for export for 30 days."),
-       ("Is there a free trial?","Yes. Every new center gets a free trial with all features, and parents get the first month free.")],
+       ("What happens to my data if the subscription ends?","Your data stays saved and the services return after renewal. If an account is closed, data stays available for export for 30 days.")],
   contact_h="Contact",
   contact="For support, questions, subscriptions, and requests to delete or correct data:",
   op="Mind is a project owned and run by an individual in the Arab Republic of Egypt.",
-  foot=[("/en/privacy/","Privacy Policy"),("/en/terms/","Terms of Use"),("/en/refund/","Refund and cancellation"),("/en/delete-account/","Delete your account"),("/en/center-agreement/","Center agreement")],
+  foot=[("/en/privacy/","Privacy Policy"),("/en/terms/","Terms of Use"),("/en/delete-account/","Delete your account"),("/en/center-agreement/","Center agreement")],
   ),
-}
-
-REFUND = {
-"ar": ("سياسة الاسترداد والإلغاء", """
-## الاشتراكات
-
-- اشتراكات Mind تُدفع مقدمًا لكل مدة (شهرية أو سنوية).
-- يمكنك إلغاء الاشتراك في أي وقت، ويستمر الوصول حتى نهاية المدة المدفوعة.
-- لا تُرد المبالغ عن مدة بدأت فعلًا، إلا ما يوجبه القانون أو سياسة المتجر الذي تم الدفع عبره.
-- الشهر المجاني وفترة التجربة لا يُحصَّل عنها أي مبلغ.
-
-## الخطأ في الخصم
-
-إذا خُصم منك مبلغ بالخطأ أو تكرر الخصم، راسلنا على operation@mind-egypt.com بتاريخ العملية ورقمها، ونراجعها ونرد المبلغ الصحيح خلال مدة معقولة بنفس وسيلة الدفع.
-
-## مدفوعات الطلاب للسنتر
-
-الرسوم التي يدفعها ولي الأمر للسنتر تُدفع مباشرة للسنتر وتخضع لسياسة السنتر. المنصة تسجّلها فقط وليست طرفًا فيها.
-
-## تغيير الأسعار
-
-نُخطر بأي تغيير في الأسعار قبل 30 يومًا على الأقل، ولا يسري التغيير على مدة مدفوعة بالفعل.
-
-## التواصل
-
-operation@mind-egypt.com
-"""),
-"en": ("Refund and cancellation policy", """
-## Subscriptions
-
-- Mind subscriptions are paid in advance for each period (monthly or yearly).
-- You can cancel at any time, and access continues until the end of the paid period.
-- Amounts for a period that has already started are not refunded, except as required by law or by the policy of the store through which you paid.
-- A free month or a free trial is not charged.
-
-## Charged by mistake
-
-If you were charged by mistake or charged twice, email operation@mind-egypt.com with the date and reference of the transaction. We will review it and return the correct amount within a reasonable time, by the same payment method.
-
-## Student payments to the center
-
-Fees a parent pays to a center are paid directly to that center and are subject to the center's policy. The Platform only records them and is not a party to them.
-
-## Price changes
-
-We give at least 30 days' notice of any price change, and a change does not apply to a period already paid for.
-
-## Contact
-
-operation@mind-egypt.com
-"""),
 }
 
 DELETE = {
@@ -177,7 +123,7 @@ DELETE = {
 
 ## بدون التطبيق
 
-راسلنا من البريد المسجّل في حسابك على operation@mind-egypt.com بعنوان «حذف حساب»، واذكر اسم الحساب. قد نطلب منك تأكيد ملكيتك للحساب، ونرد خلال 30 يومًا على الأكثر.
+لو مش قادر تدخل التطبيق، هتتوفر وسيلة تواصل رسمية هنا قريبًا. الطريقة الأساسية والأسرع هي الحذف من داخل التطبيق كما فوق.
 
 ## ملاحظات
 
@@ -195,7 +141,7 @@ Open **Settings**, then **Delete account**, and confirm. Your personal data is e
 
 ## Without the app
 
-Email us from the address registered on your account at operation@mind-egypt.com with the subject "Delete account" and the account name. We may ask you to confirm you own the account, and we reply within 30 days at most.
+If you cannot open the app, an official contact channel will be listed here soon. The main and fastest way is deleting from inside the app, as described above.
 
 ## Notes
 
@@ -222,7 +168,7 @@ def page(lang, path, title, body, desc=None, with_home=False):
 <header><div class="wrap"><a href="{t['home']}"><img src="/assets/logo.webp" alt="Mind"></a>
 <nav>{nav}<a class="lang" href="{url_other}">{t['other_label']}</a></nav></div></header>
 {body}
-<footer><div class="wrap"><div>{html.escape(t['op'])}<br>© 2026 Mind · <a href="mailto:{EMAIL}">{EMAIL}</a></div><div>{foot}</div></div></footer>
+<footer><div class="wrap"><div>{html.escape(t['op'])}<br>© 2026 Mind</div><div>{foot}</div></div></footer>
 </body></html>"""
 
 def home_body(lang):
@@ -238,15 +184,12 @@ def home_body(lang):
     faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in t["faq"])
     return f"""<main>
 <div class="wrap"><div class="hero"><h1>{e(t['h1'])}</h1><p>{e(t['sub'])}</p>
-<a class="btn" href="#plans">{e(t['cta1'])}</a><a class="btn alt" href="#contact">{e(t['cta2'])}</a></div></div>
+<a class="btn" href="#features">{e(t['cta1'])}</a></div></div>
 <section><div class="wrap"><h2>{e(t['who_h'])}</h2><div class="grid">{who}</div></div></section>
 <section id="features"><div class="wrap"><h2>{e(t['feat_h'])}</h2><div class="grid">{feats}</div>
 <h3>{e(t['priv_h'])}</h3>{priv}</div></section>
-<section id="plans"><div class="wrap"><h2>{e(t['plans_h'])}</h2><p>{e(t['plans_intro'])}</p>{plans}
-<h3>{e(t['parent_h'])}</h3>{parent}<p>{e(t['trial'])}</p><p class="note">{e(t['pay'])}</p></div></section>
 <section id="faq"><div class="wrap"><h2>{e(t['faq_h'])}</h2>{faq}</div></section>
-<section id="contact"><div class="wrap"><h2>{e(t['contact_h'])}</h2><p>{e(t['contact'])}</p>
-<p><a class="btn" href="mailto:{EMAIL}">{EMAIL}</a></p></div></section></main>"""
+</main>"""
 
 def md_body(text):
     h = markdown.markdown(text, extensions=["tables"])
@@ -268,14 +211,12 @@ for lang in ("ar", "en"):
         txt = legal(lang, name)
         title = txt.splitlines()[0].lstrip("# ").strip()
         write(os.path.join(pre, slug), page(lang, slug, title + " — Mind", md_body(txt)))
-    ttl, txt = REFUND[lang]
-    write(os.path.join(pre, "refund"), page(lang, "refund", ttl + " — Mind", md_body(f"# {ttl}\n" + txt)))
     ttl, txt = DELETE[lang]
     write(os.path.join(pre, "delete-account"), page(lang, "delete-account", ttl + " — Mind", md_body(f"# {ttl}\n" + txt)))
 
 open(os.path.join(ROOT, "CNAME"), "w").write("mind-egypt.com\n")
 open(os.path.join(ROOT, "robots.txt"), "w").write("User-agent: *\nAllow: /\nSitemap: https://mind-egypt.com/sitemap.xml\n")
-urls = ["/", "/en/"] + [f"{p}/{s}/" for p in ("", "/en") for s in ("privacy", "terms", "center-agreement", "refund", "delete-account")]
+urls = ["/", "/en/"] + [f"{p}/{s}/" for p in ("", "/en") for s in ("privacy", "terms", "center-agreement", "delete-account")]
 open(os.path.join(ROOT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>https://mind-egypt.com{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 open(os.path.join(ROOT, ".nojekyll"), "w").write("")
 print("built", len(urls), "pages")
